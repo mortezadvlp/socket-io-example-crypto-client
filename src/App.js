@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux';
+import SimpleCoinCard from './components/simpleCoinCard';
 
 function App() {
+  const coins = useSelector((state) => state.coins)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='flex flex-row flex-wrap gap-x-4 gap-y-4 justify-center content-center h-screen bg-lime-300' >
+      {
+        coins.map((coin) => 
+          <SimpleCoinCard key={coin.title} title={coin.title} />
+        )
+      }
+      
     </div>
   );
 }
