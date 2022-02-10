@@ -43,9 +43,32 @@ const initialState = [
 
 export default function cryptoReducer(state = initialState, action) {
     switch (action.type) {
-        /*case value:
-            
-            break;*/
+        case 'updateCoin':
+            return state.map((coin) => {
+                if(coin.title === action.payload.title) {
+                  coin = {
+                      ...coin,
+                      currentValue: action.payload.currentValue,
+                      changeRate: action.payload.changeRate,
+                      changeStatus: action.payload.changeStatus
+                    }
+                }
+                return coin;
+            });
+
+        case 'updateMultiCoin':
+                return state.map((coin) => {
+                    const indx = action.payload.findIndex((item) => item.title === coin.title);
+                    if(indx > -1) {
+                      coin = {
+                          ...coin,
+                          currentValue: action.payload[indx].currentValue,
+                          changeRate: action.payload[indx].changeRate,
+                          changeStatus: action.payload[indx].changeStatus
+                        }
+                    }
+                    return coin;
+                });
     
         default:
             return state;
