@@ -1,13 +1,3 @@
-/* {
-    icon: '',
-    title: '',
-    abbreviatedTitle: '',
-    currentValue: 0,
-    changeValue: 0,
-    changeRate: 0, //(%)
-    weeklySimpleChart: ''
-}*/
-
 const initialState = [
     {
         title: 'Bitcoin',
